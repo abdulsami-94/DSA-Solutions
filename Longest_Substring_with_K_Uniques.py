@@ -1,19 +1,25 @@
 s = "aabacbebebe"
 k = 3
 
-l = 0
-longest = 0
-Max_len = 3
-sett = set()
+left = 0
+longest = -1
+seen = {}
 
-for r in range(len(s)):
-    if s[l] == s[r] or s[r] in sett and len(sett) > Max_len :
-        longest += 1
-        sett.add(s[r])
+for right in range(len(s)):
+    if s[right] in seen:
+        seen[s[right]] += 1
     else:
-        l += 1
-        longest = max(longest, len(sett))
-        sett.clear()
+        seen[s[right]] = 1
+
+    while len(seen) > k:
+        seen[s[left]] -= 1
+
+        if seen[s[left]] == 0:
+            del seen[s[left]]
+        left += 1
+    if len(seen) == k:
+        longest = max(longest, right - left + 1)
+
 
 print(longest)
     
