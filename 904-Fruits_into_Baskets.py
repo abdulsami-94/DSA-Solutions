@@ -18,4 +18,3 @@ for right in range(len(fruits)):
     max_len = max(max_len, right - left + 1)
 
 print(max_len)
-
