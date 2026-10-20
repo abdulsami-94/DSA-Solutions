@@ -1,19 +1,11 @@
-nums = [-2,1,-3,4,-1,2,1,-5,4]
+nums = [1]
 
-count = 0
-maxi = nums[0]
+bestEnding = nums[0]
+ans = nums[0]
 
 for i in range(len(nums)):
-
-    count = count + nums[i]
-
-    if count > maxi:
-        maxi = count 
-
-    if count < 0:
-        count = 0
-
-        
-        
-
-print(maxi)
+    v1 = bestEnding + nums[i]
+    v2 = nums[i]
+    bestEnding = max(v1, v2)
+    ans = max(bestEnding, ans)
+print(ans)

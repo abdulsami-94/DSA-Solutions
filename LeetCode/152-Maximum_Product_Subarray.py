@@ -1,14 +1,16 @@
-nums = [2,3,-2,4]
+nums = [-2, 3, -4]
 
-res = max(nums)
-curMax, CurMin = 1, 1
+minEnd = nums[0]
+maxEnd = nums[0]
+res = nums[0]
 
-for n in nums:
-    if n == 0:
-        curMax, CurMin = 1, 1
-        continue
-    tmp = curMax * n
-    curMax = max(n * curMax, n * CurMin , n)
-    curMin = min(tmp, n * CurMin , n)
-    res = max(res, curMax, CurMin)
+for i in range(len(nums)):
+    v1 = nums[i]
+    v2 = minEnd * nums[i]
+    v3 = maxEnd * nums[i]
+
+    minEnd = min(v1, min(v2, v3))
+    maxEnd = max(v1, max(v2, v3))
+    res = max(res, maxEnd)
+
 print(res)
