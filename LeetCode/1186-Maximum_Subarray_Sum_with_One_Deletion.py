@@ -1,15 +1,12 @@
-nums = [-2 , 3 , -4]
+nums = [1,-2,0,3]
 
-count = 0
-maxi = nums[0]
+no_del = nums[0]
+one_del = float('-inf')
+best = nums[0]
 
-for i in range(len(nums)):
-    count = count + nums[i]
-    if count < maxi:
-        count = 0
-    
-    if count > maxi:
-        maxi = count
+for x in nums[1:]:
+    one_del = max(one_del + x, no_del)
+    no_del = max(no_del + x, x)
+    best = max(best, no_del, one_del)
 
-print(maxi)
-
+print(best)
