@@ -1,0 +1,15 @@
+nums = [1, -1, 5, -2, 3]
+k = 3
+
+prefix = 0
+count = 0 
+mp = {0: 1}
+
+for x in nums:
+    prefix += x
+
+    if prefix - k in mp:
+        count += mp[prefix - k] 
+    mp[prefix] = mp.get(prefix, 0) + 1
+
+print(count)
